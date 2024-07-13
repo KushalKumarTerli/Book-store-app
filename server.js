@@ -3,16 +3,15 @@ const mongoose = require("mongoose")
 const app = express()
 const cors = require("cors")
 
-const PORT = process.env.PORT || 5000
-const MONGO_URI = process.env.MONGO_URI;
+require("dotenv").config()
 
-mongoose.connect(
-    MONGO_URI,
-  {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  }
-)
+const PORT = process.env.PORT || 5000
+const MONGO_URI = process.env.MONGO_URI
+
+mongoose.connect(MONGO_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+})
 
 app.use(express.json())
 app.use(cors()) // Use the cors middleware
